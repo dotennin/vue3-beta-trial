@@ -6,10 +6,12 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prettier": "prettier --write 'src/**/*.ts'"
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "husky": "^4.2.5",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
@@ -42,5 +44,13 @@
     "sass-loader": "^8.0.2",
     "typescript": "~3.8.3",
     "vue-template-compiler": "^2.6.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts,vue": ["eslint --fix", "git add"]
   }
 }
